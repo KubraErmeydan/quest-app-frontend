@@ -1,9 +1,21 @@
 import './App.css';
+import {BrowserRouter,  Route, Routes} from "react-router-dom";
+import './index';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import User from './components/User/User';
+
 
 function App() {
   return (
     <div className="App">
-      <h>HELLO</h>
+      <BrowserRouter>
+        <Navbar></Navbar>
+        <Routes>
+          <Route exact path="/" Component={Home}  />
+          <Route exact path="/users/:userId" component ={User}> </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
