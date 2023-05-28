@@ -1,23 +1,23 @@
-import './App.css';
-import {BrowserRouter,  Route, Routes} from "react-router-dom";
-import './index';
-import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
-import User from './components/User/User';
+import React from 'react'
+import { Link,Outlet } from 'react-router-dom'
 
-
-function App() {
+const Layout = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Navbar></Navbar>
-        <Routes>
-          <Route exact path="/" Component={Home}  />
-          <Route exact path="/users/:userId" component ={User}> </Route>
-        </Routes>
-      </BrowserRouter>
+    <div>
+      <ol style={{display:"flex",listStyle: 'none',}}>
+        <li style={{ textDecoration: 'none'}}>
+          <Link to={"/"}>Home</Link>
+        </li>
+        <li  style={{ textDecoration: 'none'}}> 
+          <Link to={"/users"}>Users</Link>
+        </li>
+        <li  style={{ textDecoration: 'none'}}>
+          <Link  to={"/posts"}>Posts</Link>
+        </li>
+      </ol>
+      <Outlet />
     </div>
-  );
+  )
 }
 
-export default App;
+export default Layout
