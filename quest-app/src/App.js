@@ -1,10 +1,29 @@
 import React from 'react'
-import { Link,Outlet } from 'react-router-dom'
+import {BrowserRouter, Route,Outlet, Routes} from "react-router-dom";
+import Navbar from '../components/Navbar'
+import Home from '../components/Home'
+import User from '../components/User'
 
-const Layout = () => {
+
+const App = () => {
   return (
-    <div>
-      <ol style={{display:"flex",listStyle: 'none',}}>
+    <div className='App'>
+      <BrowserRouter>
+        <Navbar></Navbar>
+        <Routes>
+          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/users/:userId" component={User}></Route>          
+        </Routes>
+      </BrowserRouter>
+      
+      <Outlet />
+    </div >
+  )
+}
+
+export default App
+
+/* <ol style={{display:"flex",listStyle: 'none',}}>
         <li style={{ textDecoration: 'none'}}>
           <Link to={"/"}>Home</Link>
         </li>
@@ -14,10 +33,4 @@ const Layout = () => {
         <li  style={{ textDecoration: 'none'}}>
           <Link  to={"/posts"}>Posts</Link>
         </li>
-      </ol>
-      <Outlet />
-    </div>
-  )
-}
-
-export default Layout
+      </ol> */
